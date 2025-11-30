@@ -1,0 +1,18 @@
+.calender-gird {
+  /* 1. CSS Gridを有効にする */
+  display: grid;
+
+  /* 2. 1行に7つの列を作成し、全ての列を等しい幅 (1fr) に設定する */
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calender-item {
+  padding: 8px;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+.day-component {
+  width: calc(100% / 7);
+}

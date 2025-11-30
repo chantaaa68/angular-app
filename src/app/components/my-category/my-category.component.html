@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center flex-column col-8 mt-5 mx-auto">
+  <div class="mb-2 d-flex justify-content-between">
+    <label class="fs-5 text-center">マイカテゴリ一覧</label>
+    <button class="fs-5 col-3 btn btn-primary" (click)="registCategory()">
+      新規登録
+    </button>
+  </div>
+  <div class="scroll-container mb-2">
+    <div class="row g-2">
+      <mat-form-field class="w-100">
+        <mat-label>支出/収入</mat-label>
+        <mat-select
+          required
+          [formControl]="inoutFlg"
+          (selectionChange)="inoutCategoryChange($event)"
+        >
+          <mat-option *ngFor="let option of inoutOption" [value]="option.value">
+            {{ option.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="w-100">
+        <div class="scroll-container mb-2">
+          <div class="row g-2">
+            <label>クリックするとマイカテゴリを編集できます</label>
+            <button
+              *ngFor="let category of categories"
+              class="col-4 border-0 bg-transparent"
+            >
+              <div
+                class="card p-2 text-center clickable-card"
+                (click)="editCategory(category.id)"
+              >
+                <mat-icon>{{ category.iconName }}</mat-icon>
+                <div>{{ category.categoryName }}</div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

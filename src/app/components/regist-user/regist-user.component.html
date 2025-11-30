@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center flex-column col-8 mt-5 mx-auto">
+  <form [formGroup]="form">
+    <mat-form-field class="w-100">
+      <mat-label>氏名</mat-label>
+      <input matInput type="text" formControlName="userName" />
+      <mat-error>名前は必須です</mat-error>
+    </mat-form-field>
+
+    <div *ngIf="!passFlg">
+      <mat-form-field class="w-100">
+        <mat-label>パスワード</mat-label>
+        <input matInput type="text" formControlName="password" />
+        <mat-error>パスワードは必須です</mat-error>
+      </mat-form-field>
+    </div>
+    <mat-form-field class="w-100">
+      <mat-label>メールアドレス</mat-label>
+      <input matInput type="text" formControlName="email" />
+      <mat-error>メアドは必須です</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>家計簿名</mat-label>
+      <input matInput type="text" formControlName="kakeiboName" />
+      <mat-error>家計簿名は必須です</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>説明</mat-label>
+      <input matInput type="text" formControlName="kakeiboExplanation" />
+      <mat-error>説明は必須です</mat-error>
+    </mat-form-field>
+
+    <div class="d-flex justify-content-center">
+      <button
+        mat-raised-button
+        class="fs-5 col-6 btn btn-primary"
+        (click)="userId == null ? registUser() : updateUser()"
+      >
+        この内容で登録する
+      </button>
+    </div>
+  </form>
+</div>

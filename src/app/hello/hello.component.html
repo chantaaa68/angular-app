@@ -1,0 +1,31 @@
+<div>
+  <h1>{{ title }}</h1>
+
+  <button type="button" (click)="userRegistOnClick()">ユーザー登録</button>
+  <!-- 一覧エリア -->
+  <div fxFlex fxLayout="column">
+    <table mat-table class="mat-elevation-z8" [dataSource]="users">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef>氏名</th>
+        <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>メールアドレス</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.email }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
+
+<app-user></app-user>

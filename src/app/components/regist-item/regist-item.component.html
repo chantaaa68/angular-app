@@ -1,0 +1,100 @@
+<div class="d-flex justify-content-center flex-column col-8 mt-5 mx-auto">
+  <form [formGroup]="form">
+    <mat-form-field class="w-100">
+      <mat-label>日付</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="usedDate" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>金額</mat-label>
+      <input matInput type="text" formControlName="itemAmount" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>名前</mat-label>
+      <input matInput type="text" formControlName="itemName" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>支出/収入</mat-label>
+      <mat-select
+        required
+        formControlName="inoutFlg"
+        (selectionChange)="inoutCategoryChange($event)"
+      >
+        <mat-option *ngFor="let option of inoutOption" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="w-100">
+      <label *ngIf="!selectedCategoryFlg" class="fs-6">カテゴリ</label>
+      <label *ngIf="selectedCategoryFlg" class="fs-6 text-danger"
+        >カテゴリを選択してください</label
+      >
+
+      <div class="scroll-container mb-2">
+        <div class="row g-2">
+          <div *ngFor="let category of categories" class="col-4">
+            <div
+              class="card p-2 text-center clickable-card"
+              (click)="selectCard(category.id)"
+              [class.border-primary]="selectedCategoryId === category.id"
+              [class.bg-light]="selectedCategoryId === category.id"
+            >
+              <mat-icon>{{ category.iconName }}</mat-icon>
+              <div>{{ category.categoryName }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <mat-form-field class="w-100">
+      <mat-label>固定費設定</mat-label>
+      <mat-select
+        required
+        formControlName="frequency"
+        (selectionChange)="frequencyCheck($event)"
+      >
+        <mat-option
+          *ngFor="let option of frequencyOption"
+          [value]="option.value"
+        >
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="form.get('frequency')!.value != 0">
+      <mat-form-field class="w-100">
+        <mat-label>固定費終了日付</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="fixedEndDate"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="d-flex justify-content-center">
+      <button
+        mat-raised-button
+        color="primary"
+        class="fs-5"
+        (click)="registItem()"
+      >
+        この内容で登録する
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,69 @@
+<div class="d-flex align-items-center justify-content-center mt-5 fw-bold">
+  <button class="fs-5 btn" (click)="addMonth(-1)">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <p class="fs-4 p-2">{{ today | date : "yyyy年MM月" }}</p>
+  <button class="fs-5 btn" (click)="addMonth(1)">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+</div>
+<div class="d-flex justify-content-center flex-column col-8 mx-auto">
+  <table class="table table-striped">
+    <thead>
+      <td class="text-center p-1 border bg-light day-component">日</td>
+      <td class="text-center p-1 border bg-light day-component">月</td>
+      <td class="text-center p-1 border bg-light day-component">火</td>
+      <td class="text-center p-1 border bg-light day-component">水</td>
+      <td class="text-center p-1 border bg-light day-component">木</td>
+      <td class="text-center p-1 border bg-light day-component">金</td>
+      <td class="text-center p-1 border bg-light day-component">土</td>
+    </thead>
+    <tbody>
+      <tr *ngFor="let week of weeks">
+        <td>
+          <app-day-item [item]="week.sunday"></app-day-item>
+        </td>
+        <td>
+          <app-day-item [item]="week.monday"> </app-day-item>
+        </td>
+        <td>
+          <app-day-item [item]="week.tuseday"> </app-day-item>
+        </td>
+        <td>
+          <app-day-item [item]="week.wednesday"> </app-day-item>
+        </td>
+        <td>
+          <app-day-item [item]="week.thursday"> </app-day-item>
+        </td>
+        <td>
+          <app-day-item [item]="week.friday"> </app-day-item>
+        </td>
+        <td>
+          <app-day-item [item]="week.saturday"> </app-day-item>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row gx-0">
+    <div class="col text-center p-2 border bg-light">
+      <p class="fs-6 m-0">収入</p>
+      <p class="fs-5 fw-bold m-0 text-success">{{ incomes }}</p>
+    </div>
+    <div class="col text-center p-2 border bg-light">
+      <p class="m-0">支出</p>
+      <p class="fs-5 fw-bold m-0 text-danger">{{ expenses }}</p>
+    </div>
+    <div class="col text-center p-2 border bg-light">
+      <p class="m-0">合計</p>
+      <p
+        [class]="
+          incomes - expenses > 0
+            ? 'fs-5 fw-bold m-0 text-success'
+            : 'fs-5 fw-bold m-0 text-danger'
+        "
+      >
+        {{ incomes - expenses }}
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-center flex-column col-8 mt-5 mx-auto">
+  <form [formGroup]="form">
+    <mat-form-field class="w-100">
+      <mat-label>カテゴリ名</mat-label>
+      <input matInput type="text" formControlName="itemName" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>支出/収入</mat-label>
+      <mat-select required formControlName="inoutFlg">
+        <mat-option *ngFor="let option of inoutOption" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="w-100">
+      <label *ngIf="!selectedIconFlg" class="fs-6">アイコン</label>
+      <label *ngIf="selectedIconFlg" class="fs-6 text-danger"
+        >アイコンを選択してください</label
+      >
+
+      <div class="scroll-container mb-2">
+        <div class="row g-2">
+          <div *ngFor="let icon of iconOption" class="col-2">
+            <div
+              class="card p-2 clickable-card d-flex justify-content-center align-items-center"
+              (click)="selectCard(icon.iconName)"
+              [class.border-primary]="selectIconName === icon.iconName"
+              [class.bg-light]="selectIconName === icon.iconName"
+            >
+              <mat-icon>{{ icon.iconName }}</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button
+        mat-raised-button
+        class="fs-5 col-4 btn btn-primary"
+        (click)="registCategory()"
+      >
+        この内容で登録する
+      </button>
+    </div>
+  </form>
+</div>
