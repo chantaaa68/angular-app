@@ -118,7 +118,7 @@ export class KakeiboComponent {
 
     for (let i = 1; i <= 6; i++) {
       //繰り返し開始時、既に当月最後の日付まで処理済であれば、処理終了
-      if ((i == 5 || i == 6) && monthMaxDayCount == currentDayNum) {
+      if ((i == 5 || i == 6) && monthMaxDayCount < currentDayNum) {
         break;
       }
 
@@ -221,6 +221,8 @@ export class KakeiboComponent {
               };
               dayItems.push(dayItem);
             }
+            //日付を1つ進める
+            currentDayNum++;
           }
         }
         dayItemsList.push(dayItems);
