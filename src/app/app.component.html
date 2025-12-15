@@ -4,7 +4,7 @@
     <!-- Left elements -->
     <div class="d-flex align-items-center">
       <!-- Brand name -->
-      <a class="navbar-brand" href="#"> 家計簿アプリ </a>
+      <a class="navbar-brand" href="/kakeibo"> 家計簿アプリ </a>
       <!-- Links -->
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
@@ -42,6 +42,11 @@
           </div>
           <div class="col-4 text-end">
             <i class="fa fa-close p-2" (click)="showMenu()"></i>
+          </div>
+          <div class="col-12">
+            <p class="fs-6 m-0 py-2" (click)="logout()" style="cursor: pointer">
+              ログアウト
+            </p>
           </div>
         </div>
       </div>

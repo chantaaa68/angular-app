@@ -29,4 +29,8 @@ export class AppComponent {
       },
     });
   }
+
+  public logout(): void {
+    this.router.navigate(['/']);
+  }
 }

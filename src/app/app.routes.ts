@@ -34,7 +34,7 @@ export const routes: Routes = [
     title: 'カテゴリ登録編集',
     component: RigistCategoryComponent,
   },
-  { path: 'kakeibo', title: 'こんにちは', component: KakeiboComponent },
+  { path: 'kakeibo', title: '家計簿', component: KakeiboComponent },
   {
     path: 'registUser',
     title: 'ユーザー',

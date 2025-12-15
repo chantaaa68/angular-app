@@ -55,6 +55,10 @@ export class MyCategoryComponent {
   ) {}
 
   public async ngOnInit(): Promise<void> {
+    if (sessionStorage.getItem('userId')! == null) {
+      this.router.navigateByUrl('/');
+      return;
+    }
     //ここで初期データをformに流し込む
     await this.getUserCategory();
     this.inoutCategoryChange();

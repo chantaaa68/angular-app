@@ -70,7 +70,6 @@ export class RegistUserComponent {
     //リクエストパラメータにIDがある場合(つまりカテゴリ編集)の場合は、その内容を設定
     this.activatedRoute.queryParams.subscribe((params) => {
       this.userId = params['userId'];
-      console.log('idは' + this.userId);
     });
 
     //パスワード設定を表示させる
