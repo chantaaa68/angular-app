@@ -10,6 +10,7 @@ import {
 import { DayItem, Week } from '../../../model/weekItem';
 import { HttpService } from '../../services/http/http.service';
 import { DayItemComponent } from '../day-item/day-item.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-kakeibo',
@@ -42,13 +43,20 @@ export class KakeiboComponent {
    * コンストラクタ
    * @param http
    */
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService, private router: Router) {}
 
   /**
    * 初期処理
    */
   public async ngOnInit(): Promise<void> {
-    this.getKakeiboItem(this.today.getFullYear(), this.today.getMonth() + 1);
+    if (sessionStorage.getItem('userId')! == null) {
+      this.router.navigateByUrl('/');
+      return;
+    }
+    await this.getKakeiboItem(
+      this.today.getFullYear(),
+      this.today.getMonth() + 1
+    );
   }
 
   /**
