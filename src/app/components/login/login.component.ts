@@ -15,9 +15,9 @@ import { LoginRequest, LoginResponse } from '../../../dto/loginDto';
 import { HttpService } from '../../services/http/http.service';
 import { ExchangeService } from '../../services/exchange/exchange.service';
 import { ApiResponse } from '../../../dto/ApiResponse';
-import { MatInput, MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -58,7 +58,9 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  //現在あるセッション情報を破棄してからスタート
+  /**
+   * 現在あるセッション情報を破棄してからスタート
+   */
   public ngOnInit(): void {
     sessionStorage.clear();
   }
@@ -98,7 +100,9 @@ export class LoginComponent {
     }
   }
 
-  //登録画面に遷移する
+  /**
+   * 登録画面に遷移する
+   */
   public registKakeibo(): void {
     this.router.navigateByUrl('/registUser');
   }

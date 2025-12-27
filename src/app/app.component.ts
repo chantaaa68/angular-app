@@ -31,6 +31,7 @@ export class AppComponent {
   }
 
   public logout(): void {
+    this.isMenuVisible = !this.isMenuVisible;
     this.router.navigate(['/']);
   }
 }
