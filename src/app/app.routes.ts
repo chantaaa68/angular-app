@@ -6,6 +6,7 @@ import { RegistUserComponent } from './components/regist-user/regist-user.compon
 import { RigistCategoryComponent } from './components/rigist-category/rigist-category.component';
 import { HelloComponent } from './hello/hello.component';
 import { LoginComponent } from './components/login/login.component';
+import { MonthlyAnalysisComponent } from './components/monthly-analysis/monthly-analysis.component';
 
 export const routes: Routes = [
   {
@@ -39,5 +40,10 @@ export const routes: Routes = [
     path: 'registUser',
     title: 'ユーザー',
     component: RegistUserComponent,
+  },
+  {
+    path: 'monthlyReport',
+    title: '月間レポート',
+    component: MonthlyAnalysisComponent,
   },
 ];
